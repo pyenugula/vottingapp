@@ -9,7 +9,7 @@ trigger:
 variables:
   # Container registry service connection
   dockerRegistryServiceConnection: 'fa52897d-2f68-42d8-aeae-8b96e4dd9628'
-  imageRepository: 'votingapp'
+  imageRepository: 'workerapp'
   containerRegistry: 'votingapp.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/worker/Dockerfile'
   tag: 'worker$(Build.BuildId)'
