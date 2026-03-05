@@ -3,7 +3,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- main
+ paths:
+   include:
+     - results/*
+
 
 resources:
 - repo: self
@@ -16,8 +19,8 @@ variables:
   dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
   tag: '$(Build.BuildId)'
 
-  # Agent VM image name
-  vmImageName: 'getnexora'
+pool:
+ name: default
 
 stages:
 - stage: Build
