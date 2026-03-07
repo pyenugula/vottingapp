@@ -57,4 +57,4 @@ stages:
     - task: ShellScript@2
       inputs:
         scriptPath: 'scripts/updateK8sManifests.sh'
-        args: 'result $(imageRepository) $(tag)'
+        args: 'result $(containerRegistry) $(imageRepository) $(tag)'
