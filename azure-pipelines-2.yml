@@ -4,15 +4,15 @@
 trigger:
   paths:
     include:
-      - result/*
+      - worker/*
 
 variables:
   # Container registry service connection
   dockerRegistryServiceConnection: 'fa52897d-2f68-42d8-aeae-8b96e4dd9628'
-  imageRepository: 'resultapp'
+  imageRepository: 'workerapp'
   containerRegistry: 'votingapp.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
-  tag: 'result$(Build.BuildId)'
+  dockerfilePath: '$(Build.SourcesDirectory)/worker/Dockerfile'
+  tag: 'worker$(Build.BuildId)'
 
 pool:
   name: 'default'
@@ -57,4 +57,4 @@ stages:
     - task: ShellScript@2
       inputs:
         scriptPath: 'scripts/updateK8sManifests.sh'
-        args: 'result $(imageRepository) $(tag)'
+        args: 'worker $(imageRepository) $(tag)'
