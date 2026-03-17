@@ -20,9 +20,23 @@ stages:
     - task: TerraformInstaller@0
       inputs:
         terraformVersion: 'latest'
-        
-    - script: |
-        terraform --version
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/vottingapp/terraform-aks'
+        backendServiceArm: 'Azure subscription 1(54ba9e75-eabf-4618-a6d7-2335844beb77)'
+        backendAzureRmResourceGroupName: 'tfstate15559'
+        backendAzureRmStorageAccountName: 'tfstate1957'
+        backendAzureRmContainerName: 'tfstate'
+        backendAzureRmKey: 'terraform.tfstate'
+          
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'validate'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/vottingapp/terraform-aks'
+    
        
 
 
