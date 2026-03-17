@@ -49,7 +49,7 @@ stages:
         tags: '$(tag)'
 
 - stage: Update
-  displayName: Update 
+  displayName: Update Image Tag 
   jobs:
   - job: Update
     displayName: Update
