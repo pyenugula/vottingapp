@@ -37,6 +37,21 @@ stages:
         provider: 'azurerm'
         command: 'validate'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-aks'
+   
+    - task: TerraformTaskV3@3
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-aks'
+        environmentServiceNameAzureRM: 'Azure subscription 1(54ba9e75-eabf-4618-a6d7-2335844beb77)'
+    
+    - task: TerraformTaskV3@3
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-aks'
+        environmentServiceNameAzureRM: 'Azure subscription 1(1)(54ba9e75-eabf-4618-a6d7-2335844beb77)'
+            
     
        
 
